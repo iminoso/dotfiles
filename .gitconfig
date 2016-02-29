@@ -1,0 +1,25 @@
+[core]
+	excludesfile = /Users/adriankemp/.gitignore_global
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[user]
+	email = iminoso@connectedlab.com
+	name = Ian Minoso
+[alias]
+
+	lg = log --oneline --color --graph --decorate --all
+        lgg = log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+        lgp = log --pretty=oneline
+	co = checkout
+        d = diff
+        bl = branch --list
+        s = status
+        sh = show --pretty="format:" --name-only
+        c = commit
+    	prom = pull --rebase origin master
+        ri = rebase -i origin/master
+	cane = commit --amend --no-edit

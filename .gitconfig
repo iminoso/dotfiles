@@ -4,7 +4,7 @@
 [alias]
     lg = log --oneline --color --graph --decorate --all
     lgg = log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
-    lgp = log --pretty=oneline
+    hist = log --pretty=format:'%Cred%h %Creset| %s - %Cgreen[%cr] %Cblue%an' --abbrev-commit --date=relative
     co = checkout
     d = diff
     bl = branch --list

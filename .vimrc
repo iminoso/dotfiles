@@ -6,3 +6,4 @@ syntax enable
 set nobackup
 set nowb
 set noswapfile
+set tabstop=4

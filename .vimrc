@@ -6,4 +6,8 @@ syntax enable
 set nobackup
 set nowb
 set noswapfile
-set tabstop=4
+
+
+set tabstop=4 		" Set tabs to 4 spaces
+set ruler		" show the line number on the bar
+

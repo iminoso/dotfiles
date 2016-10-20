@@ -16,3 +16,5 @@
     cane = commit --amend --no-edit
     uu = !git checkout master && git push upstream master
     fpa = fetch --prune --all
+    untrack = update-index --assume-unchanged
+    track = update-index --no-assume-unchanged

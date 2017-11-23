@@ -2,6 +2,10 @@
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+" UI
+set gfn=Monaco:h16
+set linespace=2
+
 set mouse=a
 set number
 syntax enable
@@ -30,6 +34,7 @@ nnoremap \ :Ag<SPACE>
 
 " Nerdtree
 au vimenter * if !argc() | NERDTree | endif
+let g:NERDTreeMapOpenInTab = '<2-LeftMouse>'
 
 " Turn backup off, since most stuff is in SVN, git et.c anyway...
 set nobackup
@@ -37,8 +42,16 @@ set nowb
 set noswapfile
 
 set autoread    " Vim automatically refresh any files
-set tabstop=4   " Set tabs to 4 spaces
 set ruler       " show the line number on the bar
+
+" tabstop:          Width of tab character
+" softtabstop:      Fine tunes the amount of white space to be added
+" shiftwidth        Determines the amount of whitespace to add in normal mode
+" expandtab:        When on uses space instead of tabs
+set tabstop     =2
+set softtabstop =2
+set shiftwidth  =2
+set expandtab
 
 " Autocomplete
 set wildmenu
@@ -57,6 +70,12 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 " Vundle Plugins
 Plugin 'vim-airline/vim-airline'
 Plugin 'haya14busa/incsearch.vim'
+Plugin 'elixir-lang/vim-elixir'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'ervandew/supertab'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'mustache/vim-mustache-handlebars'
 
 execute pathogen#infect()
 call pathogen#helptags()

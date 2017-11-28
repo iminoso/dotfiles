@@ -30,7 +30,13 @@ nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 " bind \ (backward slash) to grep shortcut
 command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-nnoremap \ :Ag<SPACE>
+nnoremap <D-\> :Ag<SPACE>
+
+" Open ctrl-p selection in new tab
+let g:ctrlp_prompt_mappings = {
+    \ 'AcceptSelection("e")': ['<c-t>'],
+    \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
+    \ }
 
 " Nerdtree
 au vimenter * if !argc() | NERDTree | endif
@@ -53,6 +59,10 @@ set softtabstop =2
 set shiftwidth  =2
 set expandtab
 
+"indentation
+set autoindent
+set smartindent
+
 " Autocomplete
 set wildmenu
 set wildmode=longest:list
@@ -67,6 +77,16 @@ set statusline=%!getcwd()
 " ctrl-p
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
+" maps
+inoremap <c-s> <c-o>:w<CR>
+map <D-k> :NERDTreeFind<CR>
+vnoremap <c-f> y/<C-R>"<CR>
+" Press F4 to toggle highlighting on/off, and show current value.
+noremap <c-h> :set hlsearch! hlsearch?<CR>
+" change color of search highlight
+hi Search guibg=red
+hi Search guifg=white
+
 " Vundle Plugins
 Plugin 'vim-airline/vim-airline'
 Plugin 'haya14busa/incsearch.vim'
@@ -76,6 +96,7 @@ Plugin 'ervandew/supertab'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'tomtom/tcomment_vim'
 
 execute pathogen#infect()
 call pathogen#helptags()

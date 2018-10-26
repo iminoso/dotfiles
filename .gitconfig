@@ -16,6 +16,10 @@
     cane = commit --amend --no-edit
     uu = !git checkout master && git push upstream master
     fpa = fetch --prune --all
+    rb = rebase
+    rbc = rebase --continue
     ignore = update-index --assume-unchanged
     unignore = update-index --no-assume-unchanged
     ignored = !git ls-files -v | grep "^[[:lower:]]"
+    current = git rev-parse --abbrev-ref HEAD
+    resetBranch = git reset $(git merge-base master $(git current))

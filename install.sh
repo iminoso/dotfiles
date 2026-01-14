@@ -1,7 +1,27 @@
 #!/bin/bash
 
 # Dotfiles installation script
-# This script installs vim and tmux dependencies and copies configs to home directory
+# This script installs vim, tmux, and iTerm2 dependencies and copies configs to home directory
+#
+# USAGE:
+#   1. Make the script executable (if not already):
+#      chmod +x install.sh
+#
+#   2. Run the installation script:
+#      ./install.sh
+#
+# WHAT THIS SCRIPT DOES:
+#   - Installs Homebrew dependencies (tmux, reattach-to-user-namespace)
+#   - Installs Vundle (Vim plugin manager) and Vim plugins
+#   - Copies .vimrc and monokai color scheme to ~/.vimrc and ~/.vim/colors/
+#   - Installs TPM (Tmux Plugin Manager) and tmux plugins
+#   - Copies .tmux.conf to ~/.tmux.conf
+#   - Imports iTerm2 color scheme (colors.itermcolors)
+#
+# REQUIREMENTS:
+#   - macOS (script will exit if not on macOS)
+#   - Homebrew installed (script will prompt if not found)
+#   - Git (for cloning plugin managers)
 
 set -e  # Exit on error
 

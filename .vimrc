@@ -99,5 +99,4 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'tomtom/tcomment_vim'
 
-execute pathogen#infect()
-call pathogen#helptags()
+call vundle#end()

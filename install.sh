@@ -65,6 +65,14 @@ echo "Copying .vimrc to ~/.vimrc..."
 cp "$DOTFILES_DIR/.vimrc" "$HOME/.vimrc"
 echo -e "${GREEN}✓ .vimrc installed${NC}"
 
+# Copy vim color scheme
+if [ -f "$DOTFILES_DIR/.vim/colors/monokai.vim" ]; then
+    echo "Installing vim color scheme..."
+    mkdir -p "$HOME/.vim/colors"
+    cp "$DOTFILES_DIR/.vim/colors/monokai.vim" "$HOME/.vim/colors/monokai.vim"
+    echo -e "${GREEN}✓ Monokai color scheme installed${NC}"
+fi
+
 # Install Vundle plugins
 echo "Installing Vim plugins (this may take a while)..."
 vim +PluginInstall +qall || true
@@ -91,9 +99,29 @@ echo "Installing tmux plugins..."
 "$TPM_DIR/bin/install_plugins" || true
 echo -e "${GREEN}✓ Tmux plugins installed${NC}\n"
 
+# Install iTerm2 color scheme
+echo -e "${GREEN}Setting up iTerm2 color scheme...${NC}"
+if [ -f "$DOTFILES_DIR/colors.itermcolors" ]; then
+    # Check if iTerm2 is installed
+    if [ -d "/Applications/iTerm.app" ] || [ -d "$HOME/Applications/iTerm.app" ]; then
+        echo "Importing iTerm2 color scheme..."
+        # Use 'open' command to import the color scheme into iTerm2
+        open "$DOTFILES_DIR/colors.itermcolors" 2>/dev/null || true
+        echo -e "${GREEN}✓ iTerm2 color scheme imported${NC}"
+        echo -e "${YELLOW}  Note: To apply the color scheme, go to iTerm2 > Preferences > Profiles > Colors > Color Presets${NC}"
+    else
+        echo -e "${YELLOW}iTerm2 not found. Skipping color scheme import.${NC}"
+        echo -e "${YELLOW}  You can manually import $DOTFILES_DIR/colors.itermcolors later${NC}"
+    fi
+else
+    echo -e "${YELLOW}colors.itermcolors not found. Skipping iTerm2 color scheme installation.${NC}"
+fi
+echo ""
+
 echo -e "${GREEN}Installation complete!${NC}"
 echo ""
 echo "Next steps:"
 echo "  1. Restart your terminal or run: source ~/.vimrc"
 echo "  2. If tmux is running, press 'prefix + I' (default prefix is Ctrl-b) to install plugins"
 echo "  3. Or restart tmux to load the new configuration"
+echo "  4. In iTerm2, go to Preferences > Profiles > Colors > Color Presets to select your color scheme"
